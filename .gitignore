@@ -1,0 +1,15 @@
+*.pdf
+*.out
+*.aux
+*.synctex.gz
+*.blg
+*.dvi
+*.bib
+**/__pycache__
+*.pptx
+*.csv
+*.log
+*.png
+*.bbl
+*.jpg
+**/.ipynb_checkpoints

@@ -1,0 +1,322 @@
+\documentclass[preprint, letterpaper, nobibnotes, aps, superscriptaddress,prb]{revtex4-1}
+
+\usepackage{amsmath,amssymb} 
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{ltablex}
+\usepackage{xr}
+\externaldocument[SI-]{si}
+\extrafloats{200}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcommand{\subscr}[1]{_{\mathrm{{\textstyle\mathstrut}#1}}}
+\newcommand{\subscrm}[1]{_{{\textstyle\mathstrut}#1}}
+\newcommand{\subscin}[2]{_{{#1},\,\mathrm{{\textstyle\mathstrut}#2}}}
+\newcommand{\subscni}[2]{_{\mathrm{{\textstyle\mathstrut}#1},\,{#2}}}
+
+%\usepackage[margin=1in]{geometry}
+
+\graphicspath{ {figures/} }
+% good reviewers
+%  Mike Gilson
+%  Chris Fennell
+%  Marilyn Gunner
+%  Nathan Baker
+%  Walter Rocchia
+%  Emil Alexov
+%  Stefan Boresch
+%  Paul Tavan
+%  Greg Schenter, PNNL
+%  Jay Ponder
+%  Shekhar Garde
+%  Monte Pettitt
+%  
+
+\def\vf{{\bf f}}
+\def\vrp{{\bf r}'}
+\def\vr{{\bf r}}
+\def\vu{{\bf u}}
+\def\vv{{\bf v}}
+\def\vx{{\bf x}}
+\def\vn{{\bf n}}
+\def\code#1{{\tt #1}}
+\def\enum#1{{\sc #1}}
+\def\class#1{{\tt\bf #1}}
+\def\function#1{\code{#1}}
+
+% Color macros
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\brown}{\textcolor{brown}}
+\newcommand{\cyan}{\textcolor{cyan}}
+\newcommand{\magenta}{\textcolor{magenta}}
+\newcommand{\yellow}{\textcolor{yellow}}
+
+\newtoggle{fulltitlepage}
+\settoggle{fulltitlepage}{true}
+\newcommand{\ffrac}[2]{\ensuremath{\frac{\displaystyle #1}{\displaystyle #2}}}
+\def\superfrac#1#2{\raisebox{1ex}{\ensuremath{\genfrac{}{}{}2{#1}{#2}}}}
+\begin{document}
+
+\title{Numerical simulation ...}
+
+\iftoggle{fulltitlepage}{
+\author{Ali Mehdizadeh Rahimi}
+\affiliation{Dept.~of Mechanical Engineering, Northeastern University, Boston MA 02115}
+\author{Safa Jamali}
+\affiliation{Dept.~of Mechanical Engineering, Northeastern University, Boston MA 02115}
+
+\begin{abstract}
+
+%It is demonstrated that the results of investigations aiming at technological applications can also pro- %vide insights into biophysical phenomena. Techniques are described both for reducing wall shear stresses %and for controlling boundary-layer separation. (a) The latter consists of 800 plastic model scales with %com- pliant anchoring. Hairy surfaces are also considered, and surfaces in which the no-slip condition is %modified. Self-cleaning surfaces such as that of lotus leaves repre- sent an interesting option to avoid %fluid-dynamic dete- rioration by the agglomeration of dirt. An example of technological implementation is %discussed for riblets in long-range commercial aircraft. (b) Separation control is also an important %issue in biology. After a few brief comments on vortex generators, the mechanism of sep- aration control %by bird feathers is described in detail. Self-activated movable flaps (partificial bird feathers) %represent a high-lift system enhancing the maximum lift of airfoils by about 20%. This is achieved %without per- ceivable deleterious effects under cruise conditions. Fi- nally, flight experiments on an %aircraft with laminar wing and movable flaps are presented.
+%
+%
+%
+%
+%ribbed structure of shark skin
+%
+% all shear stress reduction was investigated experimentally for various riblet surfaces including a shark %skin replica.
+%
+%
+%
+%Multifunctional surface structures of plants
+%
+%Biological surfaces and their structural diversity provide  for the production of biomimetic functional %materials. The drag reducing surface structure of shark skin is the first prominent example of a %successful transfer of biological surface structures. The so-called rippled foils are artificial surfaces %developed after this model 
+
+
+% Hair surfaces abstract
+% Many living organisms found in nature have developed internal or external hairy surfaces during the course of evolution. Human lung covered % with micron-sized cilias and shark skin covered with denticles are only two examples of these hair-like structures in nature. 
+% 
+% The interaction between fluid and the flexible hair-like structures plays an important role in the dynamics of the flow surrounding these % structures. One important recent work by Hosoi et. al. attempts to characterize the non-linear flow response of hair beds both % experimentally and numerically with focus on the drag reduction. In this work, we aim to shed light on this topic further by investigating % the interplay of the fluid dynamic and structure by exploring the multi-dimensional parameter space of the problem. 
+% 
+% The paramater space which consist of rheological properties of fluid, mechanical properties of hair-like structure, flow condtion, and % geometrical parameters of the model problem. We use FSI-FOAM solver of the open source Computational Fluid Dynamics library OpenFOAM as our % numerical solver. We first validate the result of our numerical solver for a baseline case by comparing them with other numerical and % experimental data and then perform a series of simulations to explore the aforementioned parameter space. 
+% 
+% Our results suggest that ...
+% We hope that our findings may assist scientists in drag-reducing surface technologies such as naval research and biomimetics in establishing guidelines for the effective surface design.
+
+We present series of numerical simulations to examine the flow properties of a Couette flow of laminar incompressible viscous flow past an elastic wall in a two-dimensional channel. The wall is perpendicular to the direction of flow and its base is fixed to the bottom of the channel. 
+
+This study aims at characterizing the real-time relationship between the wall deflection and flow rate for by performing numerical simulations for walls with various dimensions and elastic properties. The steady state fluid--structure response of such systems have been vastly studied using experiments and the results of those experiments is used to validate the accuracy and reliability of the numerical results. 
+
+The analysis yields insight into the competing effects of elasticity of the wall and non-linear flow reponse in various limits of the space variabes. 
+
+\end{abstract}
+}{}
+\maketitle
+
+\section{Introduction}
+
+Deformable structures interacting with fluid flow are abundant in biological systems. The interplay of the flow dynamics and elastic structures has been shown to be a key factor in examples such as drag reducing in hairy coatings of biological surfaces (such as tongue\cite{} and kidney\cite{}), respiration induced soft-palate motion in the upper airway, and enhanced locomotion of parasites and microorganisms (add Refs). 
+
+Fluid-structure interaction (FSI) is a powerful tool that can be utilized to study the response of soft biological structures to fluid flow in such problems (add Refs).  
+
+Recent theoretical and computational advances in numerical approaches for fluid structure interaction problems, together with technological advances that enables scientists and engineers to design new experimental models have provided new insights into the nonlinear flow response of elastic structures.
+
+Using the pioneering work of Bechert et al.~\cite{Bechert97} on multi-functional properties of biological surfaces in flow, several studies have experimentally investigated the potential technical applications of these structures in drag reduction, vortex generation, self-cleaning surfaces and energy conservation. 
+
+Luhar and Nepf~\cite{Luhar11} designed an experiment to study the competing effects of flow-induced drag with the restoring forces due to stiffness of aquatic plants and buoyancy and developed a simple model to predict the vegetation posture and drag forces.
+
+Wexler and co-workers~\cite{Wexler13} devised an experimental setup to examine the hydrodynamics of the flow past elastic fibres, confined in a rectangular channel. Motivated by their experimental results, they proposed a mathematical model to predict the tip deflection in the small and large fibre height limits.
+
+Alvarado et al.~\cite{Alvarado17} studied the drag-reducing flow response of micro-hair bed of elastomers by running series of experiments using a Taylor--Couette geometry which lead to a theoretical model for characterizing the flow response. 
+
+A great body of work have been dedicated to study drag-reduction in deformable structures in flow since the pioneering work of Vogel, where he demonstrated that for elastic structures in flow, drag force grows slower with increase in velocity compared to rigid structures. He characterized this phenomenon by the so-called Vogel exponent $\nu$ that captures the deviations from classical quadratic relationship between drag force and velocity in high Reynolds numbers as $F\propto U^{2+\nu}$ where $\nu<0$. Negative $\nu$ corresponds to apparent shear-thinning behaviour, or equivalently, drag reduction.
+
+Many experimental studies have aatempted to estimate the Vogel exponents for variety of systemssuch as trees, grasses, flowers, leaves, aquatic vegetations etc. Some excellent reviews on Vogel exponents such as Harder et al. (2004) or de Langre et al.~\cite{DeLangre12} list them in a range around -0.7, between −0.2 to −1.2 for such systems. 
+
+All the experimental measurements that have been reported in the literature represent metrics of flow in steady-state regime. 
+We refer the interested reader to excellent reviews on the applications of hairy surfaces by Koch et al.~\cite{Koch09}, Bechert et al.~\cite{Bechert00}, and Bhushan~\cite{Bhushan12}.
+
+The goal of the present study is to use the power of computational fluid dynamics to study the effects of different flow and structural variables on dynamic coupling between the flexible plate and fluid flow in transient flow regime. The following section describes the general framework of this study is by introducing the problem geometry, nondimensional groups, and geometrical and physical parameters followed by the governing equations for a single wall in the flow. Section 3 presents the validation of present model against experimental data followed by a grid independence study. Section 4 presents the numerical results and section 5 concludes the paper by summarizing the work and highlighting questions for further research.
+
+
+\section{Materials and methods}
+
+\subsection{Geometry definition}
+
+A schematic of the problem with the pertinent parameters is shown in figure~\ref{fig:schematic}. The gometrical parameters include channel height $H$, wall height $h$, wall width $w$, wall separation distance $\delta$ and the number of beams $N$. The physical parameters include fluid density $\rho_{_f}$, fluid viscosity $\mu$, plate velocity $U_{\mathrm{top}}$, wall elastic modulus $E$ and wall density $\rho_{_s}$.
+
+\begin{figure}[h]
+\centering \resizebox{6.0in}{!}{\includegraphics{../figures/schematic.pdf}}
+\caption{Illustration of the geometry and the physical and geometrical parameters.}\protect\label{fig:schematic} 
+\end{figure}
+
+\subsection{Conservation of momentum and force balance of the plate}
+
+
+Conservation of linear momentum (assuming negligible viscous effects and for the steady flow) gives the drag force exerted by the fluid on the plate at an arbitrary length $l^{*}$ to be:
+
+\begin{equation}
+\oint_{S(l^{*})}P\cdot\hat{n}\,ds = b\int_{l^{*}}^{h}P(l)\cdot\hat{n}\,dl = F_{\perp}(l^{*})
+\end{equation}\label{lin_momentum_eq}
+
+where $P$ is the pressure, $\hat{n}$ is the outward pointing normal unit-vector, $S(l^{*})$ is the surface area of the plate from $l^{*}$ to $h$ (Fig.~\ref{fig:force_balance}), $b$ is the depth of the plane (in $z$ direction) and $l^{*}$ is the distance along the plate length from the base ($y=0$). 
+
+\begin{figure}[h]
+\centering \resizebox{3.0in}{!}{\includegraphics{../figures/force_balance.pdf}}
+\caption{Schematic of the force balance between the fluid and solid domains.}\protect\label{fig:force_balance} 
+\end{figure}
+
+The force exerted by the fluid is cancelled by the restoring shear force ($F_{\mathrm{_{e}}}$) due to the elastic deformation of the plate and the buoyancy force ($F_{\mathrm{_{b}}}$) due to the difference in the densities of the fluid and the plate ~\cite{Luhar11} (Fig.~\ref{fig:force_balance}). Assuming there is no stretch in the plate length ($h$ remains constant) due to the forces parallel to the plate, the two forces can be written as:
+
+\begin{gather}
+F_{\mathrm{{b}}}(l^{*})=(\rho_{_f}-\rho_{_s})gwb\int_{l^{*}}^{h}\sin\theta(l)d\,l \\[2ex]
+F_{\mathrm{{e}}}(l^{*})=-EI\left.\frac{d^2\theta(l)}{d\,l^2}\right\vert_{l^{*}},
+\end{gather}
+
+where $I=\dfrac{wb^3}{12}$ is the second moment of area of the plate. Densities of the fluid and plate are set to be equal in all of the simulations in this work which simplifies the force balance equation in normal direction to the plate surface to:
+%We can write $F_{\mathrm{_{d}}}$ in terms of the unit force per unit plate length as:
+
+\begin{equation}
+F_{\perp}(l^{*})=-EI\left.\frac{d^2\theta(l)}{d\,l^2}\right\vert_{l^{*}}
+\end{equation}\label{lin_momentum_eq}
+
+\iffalse
+\int_0^{L}f_{_d}(l)d\,l=\int_0^{L}\frac{1}{2}\rho C_{\!_D}bU^2(l) \cos^2\theta(l)\,dl
+\begin{equation}
+F_{\mathrm{_{D}}}=\int_{0}^{l}\frac{1}{2}\rho\,C_{\!_D}w(U\,\cos\theta)^2
+\end{equation}
+Straight-beam--based $Re_{\,\mathrm{h\perp}}$, deflected-beam--based $Re_{\mathrm{\,h\angle}}$, and channel--based Reynolds numbers $Re_{\,\mathrm{H}}$ are defined as follows:
+
+\begin{gather}
+Re_{\,\mathrm{h\angle}} = \frac{\rho_{_{f}} U_{\mathrm{avg}}h}{\mu} \\[1ex]
+Re_{\,\mathrm{h\perp}} = \frac{\rho_{_{f}} U(\frac{h}{2})h}{\mu} \\[1ex]
+Re_{\,\mathrm{H}} = \frac{\rho_{_{f}} U_{\mathrm{top}}H}{\mu} 
+\end{gather}
+
+where $U_{\mathrm{avg}}$ is the gap-averaged velocity defined as:
+\begin{align}
+U_{\mathrm{avg}} &= \frac{1}{L-\mathrm{h\angle}}\int_{{\mathrm{h\angle}}}^{L}U_x(y)\,dy,
+\end{align}
+\fi
+
+\subsection{Dimensionless groups}
+
+\subsubsection{Dimensionless local velocity}
+The presence of confinement makes the velocity profile across the gap nonlinear, however, in the proximity of the beam tip, the local velocity remains linear. Following the work of Alben et al.~\cite{Alben04} on the importance of beam-tip-region velocity on drag scaling, we define the local, stream-wise velocity at the tip of the beam as
+\begin{align}
+U\subscin{x}{loc} &= U_x(x\subscr{tip},y\subscr{tip}+\delta\subscr{loc})
+\end{align}
+where $U_{x,\mathrm{loc}}$ and $\delta\subscr{loc}$ are depicted in Figure~\ref{fig:v_loc}. To reduce the complexity of the problem and avoid introducing too many parameters, $\delta\subscr{loc}$ was set to $\dfrac{H}{40}$ for all the simulations.
+
+\begin{figure}[h]
+\centering \resizebox{4.0in}{!}{\includegraphics{../figures/local_velocity}}
+\caption{Schematic of the local velocity profile.}\protect\label{fig:v_loc} 
+\end{figure}
+
+
+where $\mathrm{h\angle}$ is the height of the tip of the deflected beam, hence $L-\mathrm{h\angle}=\mathrm{gap \ height}$.
+
+\subsubsection{Drag coefficients}
+
+We define $F_{_{\!D}}$ as the stream-wise component of $F_{\perp}$ as
+\begin{align}
+F_{_{\!D}} &= b\int_{0}^{h}P(l)\,\cos(\theta(l))\cdot\hat{n}\,dl,
+%\\
+%F_{_{\!L}} &= b\int_{0}^{h}P(l)\,\sin(\theta(l))\cdot\hat{n}\,dl\,,
+%Ca &= \frac{1}{2}\frac{\rho\,C_{\!_D}\,w\,U_{\infty}^2\,h^3}{EI}
+\end{align}
+and the normal and gap-dependent drag coefficients as:
+\begin{align}
+C\subscrm{D} = \ffrac{2F_{_{\!D}}}{\rho\,U^2_{x,\mathrm{loc}}bh} \quad\quad \mathrm{and} \quad\quad C\subscin{D}{gap} = \ffrac{2F_{_{\!D}}}{\rho\,U^2_{x,\mathrm{loc}}bh_{\angle}}
+\end{align}
+
+% \subsubsection{Cauchy number}
+% \begin{eqnarray}
+% 
+% \end{eqnarray}
+% where 
+\subsubsection{Reconfiguration and Cauchy Number}
+ Cauchy number ($Ca$) is a useful metric to assess the competing forces acting on deformable elements. It indicates the relative magnitude of the hydrodynamic drag and the restoring force due to stiffness and is defined as
+ \begin{equation}
+ Ca = \frac{\rho\,U_{\mathrm{loc}}^2}{E}.
+ \end{equation}
+de Langre~\cite{DeLangre08} used a modified form of Cauchy number to incorporate the effect of flexible-element aspect ratio where Cauchy number is scaled by slenderness $\lambda$ as
+\begin{equation}
+ Ca^{\!_{\text{\large *}}} = \frac{\lambda^3\rho\,U_{\mathrm{loc}}^2}{E} =\frac{\rho\,U_{\mathrm{loc}}^2l^3}{Ew^3} ,
+\end{equation}
+where $\lambda$ is the ratio of the maximum to minimum lengths of the flexible element~\cite{Chapman15}.
+We used two different approaches to isolate the contribution of elasticity to the velocity–-drag. First, following the work of Gosselin et al.~\cite{Gosselin11}, the reconfiguration number is defined as
+ \begin{equation}
+{R} = \dfrac{F_{\perp}}{F_{\perp,\,\mathrm{rigid}}}
+ \end{equation}
+For rigid structures, drag force scales qudratically with velocity, therefore $ {R}=\dfrac{F_{\perp}}{F_{\perp,\,\mathrm{rigid}}} \propto \dfrac{U^{2+\nu}}{U^2}\propto U^{\nu}$ (See Figure).
+\subsubsection{Vogel Number}
+
+
+
+\subsection{Numerical method}
+
+\subsubsection{Validation of the FSI solver: free vibration of a 3D cantilever beam in viscous flow}
+
+We used FOAM-FSI library~\cite{Tukovic14,Tukovic18,Cardiff18} which is an extension to the \href{https://openfoamwiki.net/index.php/Installation/Linux/foam-extend-4.1}{foam-extend} project. FOAM-FSI library comes with several strong coupling algorithms for partitioned FSI problems, efficient mesh deformation solvers based on radial basis function (RBF) and an adapter to the preCICE coupling.
+
+Several sucessful examples of the FOAM-FSI solver can be found in related literature~\cite{Cardiff18,Lin17,Huang19}. We describe one validation case, bending of a flexible cantilever beam in plug flow, to demonstrate the accuracy of the solver. We will compare the simulation results with the experimental study of Luhar et al.~\cite{Luhar11} who investigated the deformation of aquatic vegetation.
+
+table \ref{tab:comparison_luhar} shows our simulation results compared with the experimental data from Luhar and Nepf \cite{Luhar11}. There is  a good agreement between the drag coefficients and the steady state magnitude of the deflection of the free end of the beam in $x$ and $y$ directions. 
+
+\begin{table}[H]
+\centering
+\caption{Comparison between the present result and the experimental data from Luhar et al.~\cite{Luhar11} for bending of a flexible beam in uniform flow.}
+\begin{tabular}{>{\centering}p{0.2\textwidth}>{\centering}p{0.1\textwidth}>{\centering}p{0.1\textwidth}>{\centering\arraybackslash}p{0.1\textwidth}}
+\hline 
+\textbf{Data} & $C_{\!_D}$ & $\dfrac{D_{_x}}{t}$  &  $\dfrac{D_{_y}}{t}$ \rule[-2.5ex]{0pt}{7ex}\\
+\hline
+\textbf{Luhar et al.\cite{Luhar11}}  & 1.15 & 2.14 & 0.59\\
+\textbf{Current study} & 1.10 & 2.13 & 0.57 \rule[-2ex]{0pt}{5ex}\\\label{tab:comparison_luhar}
+\end{tabular}
+\label{tab:validation}
+\end{table}
+\subsubsection{Mesh resolution study (Convergence)}
+\subsubsection{Assessing the edge effect on plate solution}
+
+\section{Results and discussion}
+\subsection{Normalized Velocity vs. Normalized Drag}
+
+
+Figure shows the evolution of drag force with local velocity 
+\begin{figure}[h]
+\centering \resizebox{5.0in}{!}{\includegraphics{../figures/fdrag_vloc_normal}}
+\caption{}\protect\label{fig:schematic} 
+\end{figure}
+
+Figure demonstrates the equivalent-drag--local-velocity relationship for elastic structures with different rigidities and aspect ratios.
+\subsection{Average-rescaled velocity vs. drag}
+Figure demonstrates the velocity–-drag relationship
+
+\subsection{Normalized drag vs. Normalized velocity}
+
+\subsection{Beam tip angle Cauchy number}
+
+\begin{figure}[h]
+\centering \resizebox{5.0in}{!}{\includegraphics{../figures/chapman_fig6_loglog}}
+\caption{}\protect\label{fig:schematic} 
+\end{figure}
+\subsection{Reconfiguration number as functions of the Cauchy number}
+
+\begin{figure}[h]
+\centering \resizebox{5.0in}{!}{\includegraphics{../figures/leclercq16_fig3b_loglog}}
+\caption{}\protect\label{fig:schematic} 
+\end{figure}
+
+\subsection{Characterizing Vogel exponent using different flow metrics}
+\begin{figure}[h]
+\centering \resizebox{5.0in}{!}{\includegraphics{../figures/leclercq16_fig3c_vogel_loglog}}
+\caption{}\protect\label{fig:vogel} 
+\end{figure}
+The results shown in Figure~\ref{fig:vogel} are in agreement with the 2-D experiments and theoretical results of Alben et al.~\cite where $\nu: 0\rightarrow -\frac{2}{3}$ as a result of transitioning from a zero deformation regime in a rigid structure to a large deformation regime in an elastic structure.
+\newpage
+\section{Conclusion}
+\bibliographystyle{unsrt}
+\bibliography{jamali-lab}
+\end{document}
+

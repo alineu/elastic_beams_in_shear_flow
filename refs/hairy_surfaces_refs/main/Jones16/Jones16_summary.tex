@@ -1,0 +1,101 @@
+\documentclass[preprint, letterpaper, nobibnotes, aps, superscriptaddress,prb]{revtex4-1}
+
+\usepackage{amsmath,amssymb} 
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{ltablex}
+\usepackage{xr}
+\begin{document}
+
+\section{Bristles reduce the force required to ‘fling’ wings apart in the smallest insects}
+
+\textit{2016. Journal of Experimental Biology}
+
+\subsection{Summary}
+\begin{itemize}
+\item
+Gathered morphological data on 23 species bristles
+\item 
+Showed that the existence of bristles reduces fling while maintaining lift using numerical simulations
+\item
+Parameters space variables: 
+\begin{enumerate}
+\item 
+Bristle-based $Re_{b}$: $10^{−3}\leq Re_b \leq 10^{−1}$
+\item 
+Spacing (The gap spacing to bristle diameter ratio; Fig.~\ref{fig2})
+\begin{figure}[H]
+  \centering \resizebox{0.25\textwidth}{!}{\includegraphics{Jones16_2.png}}
+  \caption{}\label{fig2}
+\end{figure}
+
+\item 
+Angle of attack
+\item 
+wing-wing interaction
+\end{enumerate}
+\item
+Computational domain: 500 bristle diameters wide and high, and the bristles were at least $100$ bristle diameters from the edges of the computational domain (Regions of fluid that were close to the bristles or whose vorticity was above $0.125 s^{−1}$ were discretized at the highest level of refinement.)
+\item
+Numerical method: immersed boundary method
+\item
+Results: 
+\begin{itemize}
+\item Bristled wing experiences less force than a solid wing
+\item Force reduction with increasing gap to diameter ratio is greater at higher angles of attack, therefore, bristled wings may act more like solid wings at lower angles of attack than they do at higher angles of attack 
+\item In wing-wing interactions bristled wings significantly decrease the drag required to fling two wings apart compared with solid wings, especially at lower Reynolds numbers.
+
+Note:
+
+While previous work suggests that a single wing with bristles engaged in steady translation or rotation is almost as effective as a solid wing at producing aerodynamic forces, the bristles might offer an aerodynamic benefit during wing–wing interactions.
+\end{itemize}
+\end{itemize}
+
+\subsection{Parameter definitions and non-dimensional groups}
+The bristles on insect wings was modeled(approximated) as a row of cylinders (Fig.~\ref{fig1} A,B):
+
+\begin{figure}[H]
+  \centering \resizebox{0.6\textwidth}{!}{\includegraphics{Jones16_1.png}}
+  \caption{}\label{fig1}
+\end{figure}
+
+\begin{itemize}
+\item 
+\textbf{Bristle-based $R_e$} (of the order $10^{-2}$):
+\begin{equation*}
+Re_b = \frac{\rho_{\mathrm{fluid}}\,U\,D}{\mu}
+\end{equation*}
+Note: chord-based Reynolds number ($Re_c$) for these insects is of the order of 10.
+\item 
+\textbf{Leakiness} (Fig.~\ref{fig1} C):
+
+The ratio of the volume of viscous fluid that actually moves between a pair of bristles ($V_\mathrm{leak}$) to the volume across which that bristle pair sweeps ($V_{\mathrm{sweep}}$) in a unit of time (the volume of fluid that would move between the bristles in an inviscid fluid).
+
+
+\item
+\textbf{Dimensionless drag}
+\begin{itemize}
+	\item
+Non-dimensionalized by $0.5\rho\,U^2\,L$, where $U$ is the characteristic steady-state velocity and $L$ is the characteristic length and depended on the application. 
+	\item
+For simulations with only two bristles, $L$ was the bristle diameter, $D$, and the reported force was that for each individual bristle. 
+	\item
+For simulations with full-length wings, $L$ was the chord length, $c$, and the reported force was the sum of the forces experienced by the entire row of bristles. $C_L$ and $C_D$ denote the lift and drag coefficients, respectively.
+\end{itemize}
+\end{itemize}
+
+\subsection{Results}
+\subsubsection{Bristles and angle of attack}
+
+Note:
+
+ Cheer et al. (2012) discovered that the speed and approaching angle of the flow play a role in generating vortices that reduce the effective size of the gap between rakers.
+
+\end{document}

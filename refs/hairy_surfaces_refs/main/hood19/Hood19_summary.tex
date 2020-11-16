@@ -1,0 +1,89 @@
+\documentclass[preprint, letterpaper, nobibnotes, aps, superscriptaddress,prb]{revtex4-1}
+
+\usepackage{amsmath,amssymb} 
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{ltablex}
+\usepackage{xr}
+\begin{document}
+
+\section{Marine crustaceans with hairy appendages: Role of hydrodynamic boundary layers in sensing and feeding}
+
+\textit{201p. Physical Review Fluids}
+\subsection{Summary}
+    
+The equations of motion for fluids with $Re = O(1)$ are nonlinear and therefore difficult and costly to solve, there has been an emergence of asymptotic and numerical theories to enable rational design with inertia. However, in this regime, results are sensitive to variations in the boundary conditions, and so far theories have been ad-hoc. Inertial flow over complicated and intricate surfaces is an open field for study.
+
+To close this gap between biology and rational design, we investigate a bio-inspired model system of rigid hairs subject to inertial flow at $Re = O(1)$. To use inertia as a design element, similar to the olfaction mechanism in crustaceans, we need a theory for the flow phase based on experimental parameters such as hair length, diameter, and **spacing length.
+
+**Koehl et al. observed that crustaceans flick their antennae at different speeds, intentionally manipulating the Reynolds number to achieve different states of flow. 
+
+The two states observed are called:
+rake, where the fluid inside the bed of hairs is stagnant
+, and 
+sieve, where the fluid inside the bed of hairs travels opposite the motion of the antenna. Koehl et al. have conjectured that crustaceans use these different phases of flow to aid olfaction (sense of smelling/tasting).
+
+Schematic:
+\begin{figure}[H]
+  \centering \resizebox{0.65\textwidth}{!}{\includegraphics{Hood19_1.png}}
+  \caption{}\label{fig1}
+\end{figure}
+
+
+Features of the flow are set by the smallest length scale in this system, which is the diameter of the hairs, $d_h = 1 mm$. We define the characteristic velocity to be the maximum flow speed $U$ in an undisturbed channel. 
+
+Then, for water with density $\rho$ and viscosity $\mu$, we define the Reynolds number to be: $Re = \frac{\rho U d_h}{\mu}$. 
+
+They measure the flow phase as a function of $Re$ and the separation lengths $\delta$ of the hair bed by measuring the magnitude of the flow velocity in the center of the bed.
+
+\begin{figure}[H]
+  \centering \resizebox{0.65\textwidth}{!}{\includegraphics{Hood19_2.png}}
+  \caption{}\label{fig2}
+\end{figure}
+
+
+
+Design a predictive thepry that Given $Re$ and $\delta$ predicts the exhibited flow phase.
+
+\begin{figure}[H]
+  \centering \resizebox{0.65\textwidth}{!}{\includegraphics{Hood19_3.png}}
+  \caption{}\label{fig3}
+\end{figure}
+\begin{figure}[H]
+  \centering \resizebox{0.65\textwidth}{!}{\includegraphics{Hood19_4.png}}
+  \caption{}\label{fig4}
+\end{figure}
+
+
+To determine the depth of the boundary layer, we consider the $p = −0.1$ level set (The boundary that encloses the region where $\vert\frac{w'}{U}\vert>0.1$)
+\begin{align*}
+\Gamma_p={(x,y \ \vert \  w'(x,y,0)=p}\\
+r_c=\Gamma_{p\verty=H/2}, \quad p=-0.1
+\end{align*}
+then measure the critical radius ($r_c$) vs. $Re$ (Fig.~\ref{fig3})
+
+Measure the disturbance flow velocity $w'$ (Fig. 4)
+
+Defined measurables (flow is in $z$ direction):
+
+\begin{itemize}
+	\item
+\frac{\langle w \rangle}{U} vs. $Re$
+	\item
+\frac{\delta}{L_h}$ vs. $Re$
+\begin{figure}[H]
+  \centering \resizebox{0.65\textwidth}{!}{\includegraphics{Hood19_5.png}}
+  \caption{}\label{fig5}
+\end{figure}
+	\item
+\theta$ vs. $Re$
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,507 @@
+\documentclass[preprint, letterpaper, nobibnotes, aps, superscriptaddress,prb]{revtex4-1}
+
+\usepackage{amsmath,amssymb} 
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{ltablex}
+\usepackage{xr}
+\externaldocument[SI-]{si}
+\extrafloats{200}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\usepackage[margin=1in]{geometry}
+
+\graphicspath{ {figures/} }
+% good reviewers
+%  Mike Gilson
+%  Chris Fennell
+%  Marilyn Gunner
+%  Nathan Baker
+%  Walter Rocchia
+%  Emil Alexov
+%  Stefan Boresch
+%  Paul Tavan
+%  Greg Schenter, PNNL
+%  Jay Ponder
+%  Shekhar Garde
+%  Monte Pettitt
+%  
+
+\def\vf{{\bf f}}
+\def\vrp{{\bf r}'}
+\def\vr{{\bf r}}
+\def\vu{{\bf u}}
+\def\vv{{\bf v}}
+\def\vx{{\bf x}}
+\def\vn{{\bf n}}
+\def\code#1{{\tt #1}}
+\def\enum#1{{\sc #1}}
+\def\class#1{{\tt\bf #1}}
+\def\function#1{\code{#1}}
+
+% Color macros
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\brown}{\textcolor{brown}}
+\newcommand{\cyan}{\textcolor{cyan}}
+\newcommand{\magenta}{\textcolor{magenta}}
+\newcommand{\yellow}{\textcolor{yellow}}
+
+\newtoggle{fulltitlepage}
+\settoggle{fulltitlepage}{true}
+\newcommand{\ffrac}[2]{\ensuremath{\frac{\displaystyle #1}{\displaystyle #2}}}
+\def\superfrac#1#2{\raisebox{1ex}{\ensuremath{\genfrac{}{}{}2{#1}{#2}}}}
+\begin{document}
+
+\title{Numerical simulation ...}
+
+\iftoggle{fulltitlepage}{
+\author{Ali Mehdizadeh Rahimi}
+\affiliation{Dept.~of Mechanical Engineering, Northeastern University, Boston MA 02115}
+\author{Safa Jamali}
+\affiliation{Dept.~of Mechanical Engineering, Northeastern University, Boston MA 02115}
+
+\begin{abstract}
+
+%It is demonstrated that the results of investigations aiming at technological applications can also pro- %vide insights into biophysical phenomena. Techniques are described both for reducing wall shear stresses %and for controlling boundary-layer separation. (a) The latter consists of 800 plastic model scales with %com- pliant anchoring. Hairy surfaces are also considered, and surfaces in which the no-slip condition is %modified. Self-cleaning surfaces such as that of lotus leaves repre- sent an interesting option to avoid %fluid-dynamic dete- rioration by the agglomeration of dirt. An example of technological implementation is %discussed for riblets in long-range commercial aircraft. (b) Separation control is also an important %issue in biology. After a few brief comments on vortex generators, the mechanism of sep- aration control %by bird feathers is described in detail. Self-activated movable flaps (partificial bird feathers) %represent a high-lift system enhancing the maximum lift of airfoils by about 20%. This is achieved %without per- ceivable deleterious effects under cruise conditions. Fi- nally, flight experiments on an %aircraft with laminar wing and movable flaps are presented.
+%
+%
+%
+%
+%ribbed structure of shark skin
+%
+% all shear stress reduction was investigated experimentally for various riblet surfaces including a shark %skin replica.
+%
+%
+%
+%Multifunctional surface structures of plants
+%
+%Biological surfaces and their structural diversity provide  for the production of biomimetic functional %materials. The drag reducing surface structure of shark skin is the first prominent example of a %successful transfer of biological surface structures. The so-called rippled foils are artificial surfaces %developed after this model 
+
+
+% Hair surfaces abstract
+% Many living organisms found in nature have developed internal or external hairy surfaces during the course of evolution. Human lung covered % with micron-sized cilias and shark skin covered with denticles are only two examples of these hair-like structures in nature. 
+% 
+% The interaction between fluid and the flexible hair-like structures plays an important role in the dynamics of the flow surrounding these % structures. One important recent work by Hosoi et. al. attempts to characterize the non-linear flow response of hair beds both % experimentally and numerically with focus on the drag reduction. In this work, we aim to shed light on this topic further by investigating % the interplay of the fluid dynamic and structure by exploring the multi-dimensional parameter space of the problem. 
+% 
+% The paramater space which consist of rheological properties of fluid, mechanical properties of hair-like structure, flow condtion, and % geometrical parameters of the model problem. We use FSI-FOAM solver of the open source Computational Fluid Dynamics library OpenFOAM as our % numerical solver. We first validate the result of our numerical solver for a baseline case by comparing them with other numerical and % experimental data and then perform a series of simulations to explore the aforementioned parameter space. 
+% 
+% Our results suggest that ...
+% We hope that our findings may assist scientists in drag-reducing surface technologies such as naval research and biomimetics in establishing guidelines for the effective surface design.
+
+We present series of numerical simulations to examine the flow properties of a Couette flow of laminar incompressible viscous flow past an elastic wall in a two-dimensional channel. The wall is perpendicular to the direction of flow and its base is fixed to the bottom of the channel. 
+
+This study aims at characterizing the relationship between the wall deflection and flow rate for a range wall dimensions, wall elastic moduli, and beam--based Reynolds numbers.
+
+We perform several validation cases, where the results can be used to expand FSI benchmark problems.
+
+The analysis yields insight into the competing effects of elasticity of the wall and non--linear flow reponse in various limits of the space variabes. 
+
+\end{abstract}
+}{}
+\maketitle
+
+\section{Introduction}
+
+Deformable structures interacting with fluid flow are abundant in biological systems. The interplay of the flow dynamics and elastic structures has been shown to be a key factor in examples such as drag reducing in hairy coatings of biological surfaces (such as tongue\cite{} and kidney\cite{}), respiration induced soft--palate motion in the upper airway, and enhanced locomotion of parasites and microorganisms (add Refs). 
+
+Fluid-structure interaction (FSI) is a powerful tool that can be utilized to study the response of soft biological structures to fluid flow in such problems (add Refs).  
+
+Recent theoretical and computational advances in numerical approaches for fluid structure interaction problems, together with technological advances that enables scientists and engineers to design new experimental models have provided new insights into the nonlinear flow response of elastic structures.
+
+Using the pioneering work of Bechert et al. on multi--functional properties of biological surfaces in flow, several studies have experimentally investigated the potential technical applications of these structures in drag reduction, vortex generation, self--cleaning surfaces and energy conservation. 
+
+Luhar et al. designed an experiment to study the competing effects of flow--induced drag with the restoring forces due to stiffness of aquatic plants and buoyancy and developed a simple model to predict the vegetation posture and drag forces.
+
+Wexler et al. devised an experimental setup to examine the hydrodynamics of the flow past elastic fibres, confined in a rectangular channel. Motivated by their experimental results, they proposed a mathematical model to predict the tip deflection in the small and large fibre height limits.
+
+Alvarado et al. studied the drag--reducing flow response of micro--hair bed of elastomers by running series of experiments using a Taylor--Couette geometry which lead to a theoretical model for characterizing the flow response. 
+
+We refer the interested reader to two excellent reviews provided by Koch et al. and Bhushan et al. for a more comprehensive summary of the literature on these applications.
+
+In this work, we have used computational fluid dynamics to study the effects of Reynolds number, plate dimensions, plate stiffness and the number of plates in stream--wise direction on dynamic coupling between the flexible plate and fluid flow. The following section introduces the problem geometry as well as the geometrical and physical parameters. The description of the governing equations for a single wall in the flow is outlined in Section 2. Section 3 presents the validation of present model against experimental data followed by a grid independence study. Section 4 presents the numerical results and section 5 concludes the paper by summarizing the work and highlighting questions for further research.
+
+
+
+
+
+\section{Materials and methods}
+
+
+
+\subsection{Geometry definition}
+
+A schematic of the problem with the pertinent parameters is shown in figure~\ref{fig:schematic}. The gometrical parameters include channel height $H$, wall height $h$, wall width $w$, wall separation distance $\delta$ and the number of beams $N$. The physical parameters include fluid density $\rho_{_f}$, fluid viscosity $\mu$, plate velocity $U_{\mathrm{top}}$, wall elastic modulus $E$ and wall density $\rho_{_s}$.
+
+\begin{figure}[h]
+\centering \resizebox{6.0in}{!}{\includegraphics{../figures/schematic.pdf}}
+\caption{Illustration of the geometry and the physical and geometrical parameters.}\protect\label{fig:schematic} 
+\end{figure}
+
+\subsection{Conservation of momentum and force balance of the plate}
+
+
+Conservation of linear momentum (assuming negligible viscous effects and for the steady flow) gives the drag force exerted by the fluid on the plate at an arbitrary length $l^{*}$ to be:
+
+\begin{equation}
+\oint_{S(l^{*})}P\cdot\hat{n}\,ds = b\int_{l^{*}}^{h}P(l)\cdot\hat{n}\,dl = F_{\mathrm{{d}}}(l^{*})
+\end{equation}\label{lin_momentum_eq}
+
+where $P$ is the pressure, $\hat{n}$ is the outward pointing normal unit--vector, $S(l^{*})$ is the surface area of the plate from $l^{*}$ to $h$ (Fig.~\ref{fig:force_balance}), $b$ is the depth of the plane (in $z$ direction) and $l^{*}$ is the distance along the plate length from the base ($y=0$). 
+
+\begin{figure}[h]
+\centering \resizebox{3.0in}{!}{\includegraphics{../figures/force_balance.pdf}}
+\caption{Schematic of the force balance between the fluid and solid domains.}\protect\label{fig:force_balance} 
+\end{figure}
+
+The force exerted by the fluid is cancelled by the restoring shear force ($F_{\mathrm{_{e}}}$) due to the elastic deformation of the plate and the buoyancy force ($F_{\mathrm{_{b}}}$) due to the difference in the densities of the fluid and the plate ~\cite{Luhar11} (Fig.~\ref{fig:force_balance}). Assuming there is no stretch in the plate length ($h$ remains constant) due to the forces parallel to the plate, the two forces can be written as:
+
+\begin{gather}
+F_{\mathrm{{b}}}(l^{*})=(\rho_{_f}-\rho_{_s})gwb\int_{l^{*}}^{h}\sin\theta(l)d\,l \\[2ex]
+F_{\mathrm{{e}}}(l^{*})=-EI\left.\frac{d^2\theta(l)}{d\,l^2}\right\vert_{l^{*}},
+\end{gather}
+
+where $I=\dfrac{wb^3}{12}$ is the second moment of area of the plate. Densities of the fluid and plate are set to be equal in all of the simulations in this work which simplifies the force balance equation in normal direction to the plate surface to:
+%We can write $F_{\mathrm{_{d}}}$ in terms of the unit force per unit plate length as:
+
+\begin{equation}
+F_{\mathrm{{d}}}(l^{*})=-EI\left.\frac{d^2\theta(l)}{d\,l^2}\right\vert_{l^{*}}
+\end{equation}\label{lin_momentum_eq}
+
+\iffalse
+\int_0^{L}f_{_d}(l)d\,l=\int_0^{L}\frac{1}{2}\rho C_{_D}bU^2(l) \cos^2\theta(l)\,dl
+\begin{equation}
+F_{\mathrm{_{d}}}=\int_{0}^{l}\frac{1}{2}\rho\,C_{_D}w(U\,\cos\theta)^2
+\end{equation}
+\fi
+
+\subsection{Dimensionless groups}
+
+
+\subsubsection{Beam--based and channel--based Reynolds numbers}
+
+Straight--beam--based $Re_{\,\mathrm{h\perp}}$, deflected--beam--based $Re_{\mathrm{\,h\angle}}$, and channel--based Reynolds numbers $Re_{\,\mathrm{H}}$ are defined as follows:
+
+\begin{gather}
+Re_{\,\mathrm{h\angle}} = \frac{\rho_{_{f}} U_{\mathrm{avg}}h}{\mu} \\[1ex]
+Re_{\,\mathrm{h\perp}} = \frac{\rho_{_{f}} U(\frac{h}{2})h}{\mu} \\[1ex]
+Re_{\,\mathrm{H}} = \frac{\rho_{_{f}} U_{\mathrm{top}}H}{\mu} 
+\end{gather}
+
+where $U_{\mathrm{avg}}$ is height-averaged velocity defined as:
+\begin{align}
+U_{\mathrm{avg}} &= \frac{1}{h}\int_{0}^{h}U(l)\,dl,
+\end{align}
+
+where the integration is done along the path parallel to the surface of the plate.
+
+\subsubsection{Dimensionless drag}
+
+We define $F_{{dx}}$ and $F_{{dy}}$ as the stream--wise and span--wise components of $F_d$ ($x$ and $y$ directions, respectively):
+\begin{align}
+F_{{dx}} &= b\int_{0}^{h}P(l)\,\cos(\theta(l))\cdot\hat{n}\,dl \\
+F_{{dy}} &= b\int_{0}^{h}P(l)\,\sin(\theta(l))\cdot\hat{n}\,dl\,,
+%Ca &= \frac{1}{2}\frac{\rho\,C_D\,w\,U_{\infty}^2\,h^3}{EI}
+\end{align}
+
+The drag and lift coefficients can then defined as:
+
+\begin{align}
+C_D &= \ffrac{2F_{{dx}}}{\rho\,U^2_{\mathrm{avg}}\,A} = \ffrac{2b\int_{0}^{h}P(l)\,\cos(\theta(l))\cdot\hat{n}\,dl}{\rho bh\bigg(\frac{1}{h}\int_{0}^{h}U(l)\,dl\bigg)^2 } = \ffrac{2h \int_{0}^{h}P(l)\,\cos(\theta(l))\cdot\hat{n}\,dl}{\rho \bigg(\int_{0}^{h}U(l)\,dl\bigg)^2}\\
+C_L &= \ffrac{2F_{{dy}}}{\rho\,U^2_{\mathrm{avg}}\,A} = \ffrac{2b\int_{0}^{h}P(l)\,\sin(\theta(l))\cdot\hat{n}\,dl}{\rho bh\bigg(\frac{1}{h}\int_{0}^{h}U(l)\,dl\bigg)^2 } = \ffrac{2h \int_{0}^{h}P(l)\,\sin(\theta(l))\cdot\hat{n}\,dl}{\rho \bigg(\int_{0}^{h}U(l)\,dl\bigg)^2}
+%Ca &= \frac{1}{2}\frac{\rho\,C_D\,w\,U_{\infty}^2\,h^3}{EI}
+\end{align}
+$Ca$ is the Cauchy number, which indicates the relative magnitude of the hydrodynamic drag and the restoring force due to stiffness.
+% \subsubsection{Cauchy number}
+% \begin{eqnarray}
+% C_a = \frac{1}{2}\frac{\rho\,C_D\,t\,U^2\,l^3}{EI}
+% \end{eqnarray}
+% where 
+\subsection{Numerical method}
+
+\subsubsection{Validation of the FSI solver: free vibration of a 3D cantilever beam in viscous flow}
+
+We use FOAM-FSI library \cite{} which is an extension to the foam-extend project \cite{}. The FOAM-FSI library comes with several strong coupling algorithms for partitioned FSI problems, efficient mesh deformation solvers based on radial basis function (RBF) and an adapter to the preCICE coupling.
+
+Several successful examples of the FOAM-FSI solver can be found in related literature \href{Cardiff18, Lin17}. We describe one validation case, bending of a flexible cantilever beam in plug flow, to demonstrate the accuracy of the solver. We will compare the simulation results with the experimental study of Luhar et al. who investigated the deformation of aquatic vegetation.
+
+table \ref{} shows our simulation results compared with the experimental data from Luhar and Nepf \cite{}. There is  a good agreement between the drag coefficients and the steady state magnitude of the deflection of the free end of the beam in $x$ and $y$ directions. 
+
+\begin{table}[H]
+\centering
+\caption{}
+\begin{tabular}{>{\centering}p{0.2\textwidth}>{\centering}p{0.1\textwidth}>{\centering}p{0.1\textwidth}>{\centering\arraybackslash}p{0.1\textwidth}}
+\hline 
+\textbf{Data} & $C_{_D}$ & $\dfrac{D_{_x}}{t}$  &  $\dfrac{D_{_y}}{t}$ \rule[-2.5ex]{0pt}{7ex}\\
+\hline
+\textbf{Luhar et al.\cite{}}  & 1.15 & 2.14 & 0.59\\
+\textbf{Current study} & 1.10 & 2.13 & 0.57 \rule[-2ex]{0pt}{5ex}\\
+\end{tabular}
+\label{tab:validation}
+\end{table}
+
+
+\section{Results and discussion}
+
+
+% \section{Literature}
+% 
+% Different in terms of applications/industries:
+% \newline
+% Naval,Marine: Shark-skin inspired ...
+% \newline
+% \newline
+% Biology:
+% \newline
+% Cilia,Flagella,locomotion
+% \href{<https://en.wikipedia.org/wiki/Mastigoneme>}{<Mastigoneme>}
+% \href{https://www.researchgate.net/figure/Theoretical-velocity-profiles-for-cilia-beat-pa% ttern-as-illustrated-and-with-cilia_fig5_19876975}{<Cilia>}
+% \href{https://www.atsjournals.org/doi/pdf/10.1164/ajrccm/137.3.726}{<Mucus propulsion>}
+% 
+% 
+% Swimmers,Dolphins,Whales...
+% \newline
+% \newline
+% SuperHydrophobicSurfaces(SHS)
+% 
+% Different length-scales
+% \newline
+% Different parameter study:
+% \newline
+% Flow condition (Pipe,Shear,Plug etc.)
+% \newline
+% Flow regime (Laminar/Turbulent)
+% \newline
+% \textbf{Newtonian/Non-Newtonian}
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% Kramer - 1960:
+% Boundary layer destabilization by ditributed damping:
+% Main idea: An increase of the damping (viscosity?) of the boundary layer stabilizes the % boundary layer. This has been proved by looking at the behavior of the boundary layer at % low Reynolds numbers. Since the thin laminar boundary layer and the wetted surface are % in close contact it appeared promising to build appropriate dampers into the wetted % surface and thus, in effect, to increase the damping of the boundary layer. This % principle of boundary layer stabilization was called “distributed damping” analogous to % the known principle distributed boundary layer removal.
+% \newline
+% \newline
+% Turong - 2001:
+% On compliant coatings for drag reduction: 
+% 
+% Large aquatic mammals such as whales and dolphins exhibit unusually low drag % coefficients. 
+% 
+% Proposed mechanism: Delay in transition of laminar-turbulent boundary layer to higher % reynolds compared to the case of a rigid wall
+% This was later confirmed by experiments of Carpenter, Garrard and Gaster. 
+% Questions to be addressed:
+% 
+% What are the optimum wall properties that gives the greatest improvement in transition % delay?
+% 
+% What are the limitations in designing such a wall and what's the best practically % acheivable transition delay?
+% \newline
+% \newline
+% Nepf - 2011: Buoyant, flexible vegetation in flow
+% 
+% \begin{figure}[h]
+% \centering \resizebox{3.0in}{!}{\includegraphics{../refs/ref-images/Nepf-1.png}}
+% \caption{Schematic}\protect\label{fig:Nepf-1} 
+% \end{figure}
+% 
+% Drag for per unit cantilever length (Form drag caused by the velocity normal to the % beam):
+% \begin{eqnarray}
+% f_{D}(\theta)=\frac{1}{2}C_DbU^2\cos^2{\theta}
+% \end{eqnarray}
+% Bending moment due to deflection of the beam $M=EI\frac{d\theta}{ds}$ causes a resistive % shear force opposing the deflection:
+% \begin{eqnarray}
+% V=-EI\frac{d^2\theta}{ds^2}
+% \end{eqnarray}
+% and finally the bouyancy force in y-direction is:
+% \begin{eqnarray}
+% f_B=\Delta\rho g b t
+% \end{eqnarray}
+% Translating the forces to the coordinate parallel to the beam and integrating along the % beam length gives:
+% \begin{eqnarray}
+% -EI\frac{d^2\theta}{ds^2}\bigg\vert_{s^{*}}+ \Delta\rho g b t(1-s^{*})\sin \theta^{*}=\% frac{1}{2}C_DbU^2\int_{s^{*}}^{l}\cos(\theta-\theta^{*})\cos^2{\theta} \ ds
+% \end{eqnarray}
+% 
+% The ratio of the restoring force due to buoyancy and the restoring force due to % stiffness:
+% \begin{eqnarray}
+% B = \frac{\Delta \rho g b t l^3}{EI}
+% \end{eqnarray}
+% 
+% Cauchy number : The relative magnitude of the hydrodynamic drag and the restoring force % due to stiffness:
+% \begin{eqnarray}
+% C_a = \frac{1}{2}\frac{\rho C_D b U^2 l^3}{EI}
+% \end{eqnarray}
+% 
+% \begin{eqnarray}
+% -EI\frac{d^2\theta}{d\hat{s}^2}\bigg\vert_{\hat{s}^{*}}+ \Delta\rho g b t(1-\hat{s}^{*})\% sin \theta^{*}=\frac{1}{2}C_DbU^2\int_{\hat{s}^{*}}^{l}\cos(\theta-\theta^{*})\cos^2{\% theta} \ d\hat{s} \ \ \ \ \  \text{where}  \ \ \ \ \  \hat{s}^{*}=\frac{s^{*}}{l}
+% \end{eqnarray}
+% 
+% 
+% \section{Introduction}
+% 
+% Need to know the story to set the tone and perspective
+% 
+% 
+% 
+% \section{Computational Methods (Theory)}
+% 
+% The present work is focused on the interaction between an incompressible, Newtonian % fluid and an elastic, compressible solid. The fluid domain obeys the conservation of % mass and linear momentum laws:
+% 
+% \begin{eqnarray}
+% a=b \\
+% c=d
+% \end{eqnarray}
+% 
+% The solid domain obeys the conservation linear momentum law which in Lagrangian form and % with respect to
+%  some fixed reference (undeformed beam) state, is written as:
+% 
+% \begin{eqnarray}
+% a=b 
+% \end{eqnarray}
+% 
+% The details of the governing equations for the fluid and solid domains can be found \href% {<https://hrcak.srce.hr/206941>}{<here>}. 
+% 
+% \begin{figure}[h]
+% \centering \resizebox{3.0in}{!}{\includegraphics{../figures/schematic-paper.png}}
+% \caption{Schematic}\protect\label{fig:schematic} 
+% \end{figure}
+
+
+
+
+\subsubsection{Mesh resolution study (Convergence)}
+\subsection{Assessing the edge effect on plate solution}
+
+\section{Results}
+
+
+%\subsection{Time evolution of the velocity field}
+%\begin{figure}[H]
+%  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/velocity_evolution.pdf}}
+%  \caption{Time evolution of the velocity profile for 1, 2, and 4 beams for $\dot{\gamma}=0.42\,\frac{1}{s}, \ E=1 \ Mpa, \ \rho_f=\rho_s=1000 \frac{kg}{m^3}.$}\protect\label{fig:d_x}
+%\end{figure}
+
+\subsection{Time histories of $C_{_D}$ and $C_{_L}$}
+
+\begin{figure}[H]
+  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/CD_U02E6H4.pdf}}
+  \caption{Time history of the drag coefficient of the first beam for different number of beams in flow}\protect\label{fig:c_d}
+\end{figure}
+\begin{figure}[H]
+  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/CL_U02E6H4.pdf}}
+  \caption{Time history of the lift coefficient of the first beam for different number of beams in flow}\protect\label{fig:c_l}
+\end{figure}
+
+\subsection{Time history of beam tip deflection}
+\begin{figure}[H]
+  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/Dx_U02E6H4.pdf}}
+  \caption{Time history of the tip deflection of the first beam in $x$-direction for different number of beams}\protect\label{fig:d_x}
+\end{figure}
+\begin{figure}[H]
+  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/Dy_U02E6H4.pdf}}
+  \caption{Time history of the tip deflection of the first beam in $y$-direction for different number of beams }\protect\label{fig:d_x}
+\end{figure}
+
+
+\subsection{Effect of the beams stifness on time histories of $C_{_D}$ and $C_{_L}$}
+
+\begin{figure}[H]
+  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/CD_rel_E_U02E7H4.pdf}}
+  \caption{Time history of the drag coefficient of the first beam}\protect\label{fig:c_d}
+\end{figure}
+\begin{figure}[H]
+  \centering \resizebox{0.85\textwidth}{!}{\includegraphics{../figures/CL_rel_E_U02E7H4.pdf}}
+  \caption{Time history of the lift coefficient of the first beam}\protect\label{fig:c_l}
+\end{figure}
+
+
+
+\subsection{Temporal and spatial evolution of the velocity profile}
+
+\subsubsection{The effect of number of beams on velocity field}
+\begin{figure}[H]
+  \centering \resizebox{0.75\textwidth}{!}{\includegraphics{../figures/spatial_U.pdf}}
+  \caption{Isocontours of the velocity magnitude for 1, 2 and 4 beams at $t\,=\,20\,s$. $A\,-\,A'$ cross-section is $2$ separation length ($\delta$) after the last beam.}\protect\label{fig:U_spatial}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.75\textwidth}{!}{\includegraphics{../figures/spatial_Ux.pdf}}
+  \caption{Isocontours of the stream-wise velocity ($U_x$) for 1, 2 and 4 beams at $t\,=\,20\,s$. $A\,-\,A'$ cross-section is $2$ separation length ($\delta$) after the last beam.}\protect\label{fig:Ux_spatial}
+\end{figure}
+
+\subsubsection{The effect of the number of beams on temporal velocity}
+
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/U05E6H4_temporal.pdf}}
+  \caption{Temporal velocity magnitude at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:U_spatial}) for different number of beams in flow direction. $\dot{\gamma}=0.42 \frac{1}{s},\,U_{max}=H\dot{\gamma},\,\frac{H}{h}=3,\,\frac{H}{w}=24$}\protect\label{fig:Nb_U}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/U05E6H4_Ux_temporal.pdf}}
+  \caption{Stream--wise velocity ($U_x$) at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:Ux_spatial}) for different number of beams in flow direction. $\dot{\gamma}=0.42 \frac{1}{s},\,U_{max}=H\dot{\gamma},\,\frac{H}{h}=3,\,\frac{H}{w}=24$}\protect\label{fig:Nb_Ux}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/U05E6H4_Uy_temporal.pdf}}
+  \caption{Span--wise velocity ($U_y$) at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:Ux_spatial}) for different number of beams in flow direction. $\dot{\gamma}=0.42 \frac{1}{s},\,U_{max}=H\dot{\gamma},\,\frac{H}{h}=3,\,\frac{H}{w}=24$}\protect\label{fig:Nb_Uy}
+\end{figure}
+
+\subsection{Effect of the beam elastic modulus on temporal velocity}
+
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/U02H6HN1_EE_temporal.pdf}}
+  \caption{Temporal velocity magnitude at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:U_spatial}) for different beam elastic moduli. $\dot{\gamma}=0.17 \frac{1}{s},\,U_{max}=H\dot{\gamma},\,\frac{H}{h}=2,\,\frac{H}{w}=24$ }\protect\label{fig:EE_U}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/U02H6HN1_EE_Ux_temporal.pdf}}
+  \caption{Stream--wise velocity ($U_x$) at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:Ux_spatial}) for different beam elastic moduli. $\dot{\gamma}=0.17 \frac{1}{s},\,U_{max}=H\dot{\gamma},\,\frac{H}{h}=2,\,\frac{H}{w}=24$}\protect\label{fig:EE_Ux}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/U02H6HN1_EE_Uy_temporal.pdf}}
+  \caption{Span--wise velocity ($U_y$) at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:Ux_spatial}) for different beam elastic moduli. $\dot{\gamma}=0.17 \frac{1}{s},\,U_{max}=H\dot{\gamma},\,\frac{H}{h}=2,\,\frac{H}{w}=24$ }\protect\label{fig:EE_Uy}
+\end{figure}
+
+\subsection{Effect of Reynolds number on temporal velocity}
+
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/E6H4N1_Re_temporal.pdf}}
+  \caption{Temporal velocity magnitude at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:U_spatial}) at different Reynolds numbers}\protect\label{fig:Re_U}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/E6H4N1_Re_Ux_temporal.pdf}}
+  \caption{Stream--wise velocity ($U_x$) at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:Ux_spatial}) at different Reynolds numbers}\protect\label{fig:Re_Ux}
+\end{figure}
+
+\begin{figure}[H]
+  \centering \resizebox{0.95\textwidth}{!}{\includegraphics{../figures/E6H4N1_Re_Uy_temporal.pdf}}
+  \caption{Span--wise velocity ($U_y$) at $A\,-\,A'$ cross-section of the channel (Shown in figure~\ref{fig:Ux_spatial}) at different Reynolds numbers}\protect\label{fig:Re_Uy}
+\end{figure}
+
+
+%\subsection{Mean tip deflection with $Ca$}
+%\subsection{Vibration frequency of beam tip}
+
+%\subsection{Flow--induced vortex shedding}
+
+%\subsection{Flow--induced vortex shedding}
+
+\section{Conclusion}
+
+\end{document}
+
